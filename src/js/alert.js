@@ -1,5 +1,11 @@
-// Alert Extension
-// ===============================
 
-$('.alert').attr('role', 'alert')
-$('.close').removeAttr('aria-hidden').wrapInner('<span aria-hidden="true"></span>').append('<span class="sr-only">Close</span>')
+  // Alert Extension
+  // ===============================
+  var alertConstructor = $.fn.dropdown.Constructor,
+      alertFn = $.fn.dropdown;
+
+  $.fn.alert = function () {
+    $(this).attr({ role: 'alert' });
+    return alertFn.apply(this, arguments);
+  };
+  $.fn.alert.Constructor = alertConstructor;

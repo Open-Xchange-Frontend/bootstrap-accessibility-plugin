@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 			'* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>;' +
 			' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n' ,
 
-		license: 
+		license:
 			'/* ========================================================================' + '\n' +
 
 			'* Extends Bootstrap v3.1.1' + '\n' + '\n' +
@@ -31,21 +31,22 @@ module.exports = function(grunt) {
 					'src/js/alert.js',
 					'src/js/tooltip.js',
 					'src/js/popover.js',
-					'src/js/modal.js',
 					'src/js/dropdown.js',
-					'src/js/tab.js',
-					'src/js/collapse.js',
-					'src/js/carousel.js'
+					'src/js/modal.js'
+
+					// 'src/js/carousel.js',
+					// 'src/js/tab.js',
+					// 'src/js/collapse.js'
 				],
-			}			
+			}
 		},
 
 	    concat: {
 	      options: {
-	        banner: '<%= license %>  \n \n (function($) { \n  "use strict"; \n',
+	        banner: '<%= license %> \n\n(function($) {\n  "use strict";\n',
 	        separator: '\n',
 	        stripBanners: false,
-			footer: '\n\n })(jQuery);'
+			footer: '\n\n})(jQuery);'
 	      },
 			bootstrap: {
 				src: [
@@ -53,14 +54,15 @@ module.exports = function(grunt) {
 					'src/js/alert.js',
 					'src/js/tooltip.js',
 					'src/js/popover.js',
-					'src/js/modal.js',
 					'src/js/dropdown.js',
-					'src/js/tab.js',
-					'src/js/collapse.js',
-					'src/js/carousel.js'
+					'src/js/modal.js'
+
+					// 'src/js/carousel.js',
+					// 'src/js/tab.js',
+					// 'src/js/collapse.js'
 				],
 	        	dest: 'plugins/js/bootstrap-accessibility.js'
-	       	} 
+	       	}
 	    },
 
 		uglify: {
@@ -85,7 +87,7 @@ module.exports = function(grunt) {
 					outputStyle: 'compressed'
 				}
 			}
-		},		
+		},
 
 	});
 
