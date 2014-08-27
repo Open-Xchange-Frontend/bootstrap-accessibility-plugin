@@ -32,9 +32,9 @@ module.exports = function(grunt) {
 					'src/js/tooltip.js',
 					'src/js/popover.js',
 					'src/js/dropdown.js',
-					'src/js/modal.js'
+					'src/js/modal.js',
+					'src/js/carousel.js'
 
-					// 'src/js/carousel.js',
 					// 'src/js/tab.js',
 					// 'src/js/collapse.js'
 				],
@@ -43,10 +43,10 @@ module.exports = function(grunt) {
 
 	    concat: {
 	      options: {
-	        banner: '<%= license %> \n\n(function($) {\n  "use strict";\n',
+	        banner: '<%= license %> \n\n(function($) {\n\n  "use strict";\n',
 	        separator: '\n',
 	        stripBanners: false,
-			footer: '\n\n})(jQuery);'
+			footer: '\n})(jQuery);'
 	      },
 			bootstrap: {
 				src: [
@@ -55,9 +55,9 @@ module.exports = function(grunt) {
 					'src/js/tooltip.js',
 					'src/js/popover.js',
 					'src/js/dropdown.js',
-					'src/js/modal.js'
+					'src/js/modal.js',
+					'src/js/carousel.js'
 
-					// 'src/js/carousel.js',
 					// 'src/js/tab.js',
 					// 'src/js/collapse.js'
 				],
@@ -68,7 +68,6 @@ module.exports = function(grunt) {
 		uglify: {
 			options: {
 				banner: '<%= banner %>',
-				// beautify: true,
 				mangle: false
 			},
 			dist: {
