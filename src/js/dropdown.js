@@ -55,7 +55,7 @@
       dropdownFn = $.fn.dropdown;
 
   $.fn.dropdown = function () {
-    if (!$(this).data('bs.dropdown')) dropdownFn.apply(this, arguments);
-    return a11yDropdown.apply(this);
+    if (!$(this).data('bs.dropdown')) a11yDropdown.apply(this);
+    return dropdownFn.apply(this, arguments);
   };
   $.fn.dropdown.Constructor = dropdownConstructor;
