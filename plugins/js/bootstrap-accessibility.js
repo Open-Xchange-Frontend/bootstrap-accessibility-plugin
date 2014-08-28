@@ -85,7 +85,7 @@
     var $tip = this.tip(),
         tooltipID = $tip.attr('id') || uniqueId('ui-tooltip');
     $tip.attr({ role: 'alert', id: tooltipID });
-    this.$element.attr('aria-describedby', tooltipID).focus();
+    this.$element.attr('aria-describedby', tooltipID);
   };
 
   $.fn.popover.Constructor.prototype.hide =  function () {
