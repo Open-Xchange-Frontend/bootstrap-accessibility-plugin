@@ -113,11 +113,15 @@
       .attr({ role: 'menuitem', tabIndex: '-1' });
 
     root.on({
-      'shown.bs.dropdown': function(e) {
+      'shown.bs.dropdown': function(e, args) {
         toggle.attr({ 'aria-expanded': 'true' });
-        setTimeout(function() {
-          $('[role=menuitem]:visible:first', menu).focus();
-        }, 200);
+        var el = args.relatedTarget
+        if (!$(el).data('byMouse')) {
+          setTimeout(function() {
+            $('[role=menuitem]:visible:first', menu).focus();
+          }, 200);
+        }
+        $(el).removeData('byMouse')
       },
       'hidden.bs.dropdown': function(e) {
         toggle.attr('aria-expanded','false');
@@ -145,6 +149,9 @@
       if (e.which == 32) {
         $(this).click();
       }
+    })
+    .on('mousedown.bs.dropdown.data-api', '[data-toggle=dropdown]', function (e) {
+      $(this).data('byMouse', true);
     });
 
   var dropdownConstructor = $.fn.dropdown.Constructor,
