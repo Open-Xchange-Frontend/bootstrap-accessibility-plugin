@@ -20,12 +20,12 @@
       'shown.bs.dropdown': function(e, args) {
         toggle.attr({ 'aria-expanded': 'true' });
         var el = args.relatedTarget
-        if (!$(el).data('byMouse')) {
+        if (!$(el).data('preventFocus')) {
           setTimeout(function() {
             $('[role=menuitem]:visible:first', menu).focus();
           }, 200);
         }
-        $(el).removeData('byMouse')
+        $(el).removeData('preventFocus')
       },
       'hidden.bs.dropdown': function(e) {
         toggle.attr('aria-expanded','false');
@@ -55,14 +55,17 @@
       }
     })
     .on('mousedown.bs.dropdown.data-api', '[data-toggle=dropdown]', function (e) {
-      $(this).data('byMouse', true);
+      $(this).data('preventFocus', true);
     });
 
   var dropdownConstructor = $.fn.dropdown.Constructor,
       dropdownFn = $.fn.dropdown;
 
-  $.fn.dropdown = function () {
+  $.fn.dropdown = function (option) {
     if (!$(this).data('bs.dropdown')) a11yDropdown.apply(this);
+    if (typeof option === 'string' && option === 'toggle') {
+      $(this).data('preventFocus', true);
+    }
     return dropdownFn.apply(this, arguments);
   };
   $.fn.dropdown.Constructor = dropdownConstructor;
