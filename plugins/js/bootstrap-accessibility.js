@@ -106,19 +106,21 @@
     toggle
       .attr({ 'aria-haspopup': true, 'aria-expanded': false });
     menu
+      .not('[role]')
       .attr({ role: 'menu' });
     items
       .attr({ role: 'presentation' })
       .find('a')
+      .not('[role]')
       .attr({ role: 'menuitem', tabIndex: '-1' });
 
     root.on({
       'shown.bs.dropdown': function(e, args) {
-        toggle.attr({ 'aria-expanded': 'true' });
+        toggle.attr({ 'aria-expanded': true });
         var el = args.relatedTarget
         if (!$(el).data('preventFocus')) {
           setTimeout(function() {
-            $('[role=menuitem]:visible:first', menu).focus();
+            $('a[role^="menuitem"]',items).first(':visible').focus();
           }, 200);
         }
         $(el).removeData('preventFocus')
