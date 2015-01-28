@@ -13,9 +13,10 @@
       .not('[role]')
       .attr({ role: 'menu' });
     items
-      .attr({ role: 'presentation' })
-      .find('a')
-      .not('[role]')
+      .filter(':not([role])')
+      .attr({ role: 'presentation' });
+    items
+      .find('a:not([role])')
       .attr({ role: 'menuitem', tabIndex: '-1' });
 
     root.on({
