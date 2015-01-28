@@ -147,10 +147,10 @@
         }
       }, 150);
     })
-    .on('keydown.bs.dropdown.data-api', '[data-toggle=dropdown], [role=menu], [role=listbox]' , function (e) {
+    .on('keydown.bs.dropdown.data-api', '[data-toggle=dropdown], [role=menu]' , function (e) {
       //Adding Space Key Behaviour, opens on spacebar
-      if (e.which == 32) {
-        $(this).click();
+      if (e.which == 32 && $(e.target).is('a')) {
+        $(e.target).click();
       }
     })
     .on('mousedown.bs.dropdown.data-api', '[data-toggle=dropdown]', function (e) {
