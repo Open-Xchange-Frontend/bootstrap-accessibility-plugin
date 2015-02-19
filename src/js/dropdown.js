@@ -15,8 +15,10 @@
             .filter(':not([role])')
             .attr({ role: 'presentation' });
         items
-            .find('a:not([role])')
-            .attr({ role: 'menuitem', tabIndex: '-1' });
+            .find('a')
+            .attr({ tabIndex: '-1' })
+            .filter(':not([role])')
+            .attr({ role: 'menuitem' });
 
         root.on({
             'shown.bs.dropdown': function(e, args) {
